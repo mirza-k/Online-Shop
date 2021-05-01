@@ -1,0 +1,61 @@
+<div *ngIf="productItem!=null" class="row d-flex justify-content-center">
+    <div class="col-sm-9 d-flex mt-3 m-2 p-2" style="background-color: whitesmoke; border-radius: 10px;">
+        <div class="row w-100">
+            <div class="col-sm-3">
+                <img style="width: 120px; height: 120px;" class="img-fluid" src="{{productItem.imageUrl}}" alt="">
+            </div>
+            <div class="col-sm-9" >
+                <div class="d-flex justify-content-between">
+                    <div class="">
+                        <div class="d-flex">
+                            <p style="font-weight: bold;">Name:</p>
+                            <p class="ml-2">{{productItem.name}}</p>
+                        </div>
+                        <div class="d-flex">
+                            <p style="font-weight: bold;">Brand:</p>
+                            <p class="ml-2">{{productItem.brandName}}</p>
+                        </div>
+                        <div class="d-flex">
+                            <p style="font-weight: bold;">Price:</p>
+                            <p class="ml-2">{{productItem.itemPrice}}.00 €</p>
+                        </div>
+                    </div>
+                    <div class="">
+                        <div class="d-flex">
+                            <p style="font-weight: bold;">Category:</p>
+                            <p>{{productItem.subCategoryName}}</p>
+                        </div>
+                        <div class="d-flex">
+                            <p style="font-weight: bold;">Color:</p>
+                            <p class="ml-2">{{productItem.colorName}}</p>
+                        </div>
+                        <div class="d-flex">
+                            <p style="font-weight: bold;">SubCategory:</p>
+                            <p class="ml-2">{{productItem.subCategoryName}}</p>
+                        </div>
+                    </div>
+                    <div class="">
+                        <div class="d-flex">
+                            <p style="font-weight: bold;">Sold quantity:</p>
+                            <p class="ml-2">{{productItem.soldQuantity}}</p>
+                        </div>
+                        <div class="d-flex">
+                            <p style="font-weight: bold;">Stock quantity:</p>
+                            <p class="ml-2">{{productItem.stockQuantity}}</p>
+                        </div>
+                        <div class="d-flex">
+                            <p style="font-weight: bold;">Visible:</p>
+                            <p *ngIf="productItem.isVisible" class="ml-2 text-primary">True</p>
+                            <p *ngIf="!productItem.isVisible" class="ml-2 text-danger">False</p>
+                        </div>
+                    </div>
+                    <div class=" d-flex flex-column justify-content-around">
+                        <button class="btn btn-primary" (click)="onUpdate(productItem.productId)">Update</button>
+                        <button *ngIf="productItem.isVisible" class="btn btn-danger" (click)="onDelete(productItem.productId)">Delete</button>
+                        <button *ngIf="!productItem.isVisible" class="btn btn-success" (click)="onDelete(productItem.productId)" >Activate</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

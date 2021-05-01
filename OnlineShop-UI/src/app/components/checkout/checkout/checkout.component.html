@@ -1,0 +1,47 @@
+<h2 class="text-center">Checkout</h2>
+<div *ngIf="successMessage != null" class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>{{successMessage}}</strong>
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+</div>
+<div class="row">
+    <div class="col-sm-8">
+        <app-checkout-item *ngIf="buyNowItem != null" [item]="buyNowItem"></app-checkout-item>
+        <div *ngIf="shoppingCartItems != null">
+            <app-checkout-item *ngFor="let sc of shoppingCartItems" [itemShoppingCart]="sc"></app-checkout-item>
+        </div>
+    </div>
+    <div class="col-sm-4 mt-4" style="position:fixed; margin-left: 1000px; background-color: whitesmoke; width: 350px; height:450px; 
+    border-width: 1px; border-color: rgb(100, 100, 100); border:1px solid; border-radius: 10px; padding: 20px;">
+        <div>
+            <p class="m-0 mb-1">Address:</p>
+            <input type="text" class="form-control" value="Rudi Čajevec Lamela B" readonly>
+        </div>
+        <div class="mt-2">
+            <p class="m-0 mb-1">City:</p>
+            <input type="text" class="form-control" value="Kakanj" readonly>
+        </div>
+        <div class="mt-2">
+            <p class="m-0 mb-1">Phone number:</p>
+            <input type="text" class="form-control" value="225-883" readonly>
+        </div>
+        <div class="m-0 mt-2 d-flex justify-content-between" style="font-size: 17px;">
+            <p>Products Total: </p>
+            <p> {{totalWithoutCheckout}}.00 €</p>
+        </div>
+        <div class="m-0  d-flex justify-content-between" style="font-size: 17px;">
+            <p>Shipping price: </p>
+            <p *ngIf="shippingFree()"> Free shipping</p>
+            <p *ngIf="!shippingFree()">5.00 €</p>
+        </div>
+        <div class="m-0 mt-2 d-flex justify-content-between" style="font-size: 19px;">
+            <p><strong>Total Price: </strong> </p>
+            <p>{{totalPrice}}.00 € </p>
+        </div>
+        <button class="btn btn-success w-100" (click)="onCheckout()">Checkout</button>
+    </div>
+</div>
+
+
+<!-- <hr style="width:57.5%"> -->

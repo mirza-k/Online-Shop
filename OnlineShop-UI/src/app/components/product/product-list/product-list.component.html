@@ -1,0 +1,15 @@
+<div *ngIf="successMessage!=''" class="alert alert-success alert-dismissible fade show" role="alert">
+    <strong>{{successMessage}}</strong>
+    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="text-white" style="background-color: grey; height: 50px;">
+    <p class="text-center pt-2" style="font-size: 18px;">Most Popular Products</p>
+</div>
+<div class="row mt-2 d-flex justify-content-center">
+    <div class="col-sm-11 d-sm-flex justify-content-between" style="flex-wrap: wrap;">
+        <app-product-item routerLink="/product/{{p.productId}}" *ngFor="let p of products" [productItem]="p">
+        </app-product-item>
+    </div>
+</div>

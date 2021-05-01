@@ -1,0 +1,27 @@
+<div class="row d-flex justify-content-center mt-5" >
+  <div class="col-sm-3 p-4" style="background: rgb(233, 233, 233); border:1px solid black; border-radius: 10px;">
+    <h2 class="text-center">Login</h2>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <input type="hidden" formControlName="userId">
+    
+      <div class="form-outline mt-2">
+        <input type="text" formControlName="username" id="form2Example2" class="form-control" />
+        <label class="form-label" for="form2Example2">Username</label>
+      </div>
+
+      <div class="form-outline">
+        <input type="password" formControlName="password" id="form2Example2" class="form-control" />
+        <label class="form-label" for="form2Example2">Password</label>
+      </div>
+      <p class="text-danger" *ngIf="!validLogin">Password or username invalid.</p>
+
+      <button type="submit" class="btn btn-secondary btn-block mb-4" >Sign in</button>
+    
+      <div class="text-center">
+        <p>Not a member? <a routerLink="/user/register" href="#!">Register</a></p>
+      </div>
+
+    </form>
+
+  </div>
+</div>

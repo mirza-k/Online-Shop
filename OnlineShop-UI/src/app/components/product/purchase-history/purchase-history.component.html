@@ -1,0 +1,47 @@
+<div class="row">
+    <div class="col-sm-12">
+        <div class="text-white" style="background-color: grey; height: 50px;">
+            <p class="text-center pt-2" style="font-size: 18px;">Purchase history</p>
+        </div>
+        <div class="row d-flex justify-content-center mt-3" *ngFor="let o of orders">
+            <div class="col-sm-6"  style="background-color:whitesmoke; border-radius: 10px; padding: 10px;" >
+                <div class="row d-flex justify-content-center">
+                    <div class="col-sm-12 d-flex justify-content-center">
+                        <div class="d-flex justify-content-around w-100">
+                            <h5><strong>Order date: </strong>{{o.orderDate}}</h5>
+                            <h5><strong>Total price: </strong>{{o.totalPrice}}.00 €</h5>
+                        </div>
+                    </div>
+                </div>
+                <hr class="w-75">
+                <div class="row" *ngFor="let op of o.products">
+                    <div class="col-sm-5">
+                        <img src="{{op.imageUrl}}" style="width: 70%; height: 80%;" alt="">
+                    </div>
+                    <div class="col-sm-7 mt-3">
+                        <div class="d-flex">
+                            <p><strong>Product name:</strong></p>
+                            <p class="ml-3">{{op.productName}}</p>
+                        </div>
+                        <div class="d-flex">
+                            <p><strong>Quantity:</strong></p>
+                            <p class="ml-3">{{op.quantity}}</p>
+                        </div>
+                        <div class="d-flex">
+                            <p><strong>Product price:</strong></p>
+                            <p class="ml-3">{{op.productPrice}}.00 €</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row d-flex justify-content-center">
+            <div class="col-sm-5">
+                <ngb-pagination [collectionSize]="numOfCollection" [pageSize]="numberOfItems" [(page)]="currentPage" [maxSize]="20"
+                [rotate]="true" [boundaryLinks]="true" (pageChange)="onPageNumberChange()"></ngb-pagination>
+            </div>
+        </div>
+
+    </div>
+</div>

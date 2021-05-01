@@ -1,0 +1,70 @@
+<div class="row m-0 mt-3">
+    <div class="col-sm-12">
+        <div *ngIf="errorMessage.length > 0" class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>{{errorMessage}}</strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div *ngIf="notAllowedToChecokutMessageBuyNow.length > 0" class="alert alert-danger alert-dismissible fade show"
+            role="alert">
+            <strong>{{notAllowedToChecokutMessageBuyNow}}</strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div *ngIf="notAllowedToAddProductToShopCart.length > 0" class="alert alert-danger alert-dismissible fade show"
+            role="alert">
+            <strong>{{notAllowedToAddProductToShopCart}}</strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <div class="row m-0" *ngIf="productItem != null">
+            <div class="col-sm-5">
+                <img class="img-fluid" src="{{productItem.imageUrl}}" alt="">
+            </div>
+            <div class="col-sm-7">
+                <div>
+                    <div class="d-flex">
+                        <div>
+                            <h4>{{productItem.name}}</h4>
+                            <p class="mt-3">Category: {{productItem.subCategoryName}}</p>
+                        </div>
+                        <div>
+                            <button (click)="onBuyNow()" [disabled]="!quantityValid" class="btn btn-danger ml-3">Buy Now</button>
+                        </div>
+                    </div>
+                    <div class="p-2 text-white"
+                        style="background-color: grey; max-width: 850px; border: 1px black solid; height:100px; word-wrap: break-word;">
+                        {{productItem.description}}
+                    </div>
+                    <p style="font-size:20px; font-weight: bold;" class="text-black mt-3">{{productItem.itemPrice}}.00 €</p>
+                </div>
+                <div class="d-flex">
+                    <div class="d-flex align-items-center">
+                        <span>Size:</span>
+                        <select *ngIf="shoeSizes != null" [(ngModel)]='sizeValue' style="width:75px;height: 35px;"
+                            class="form-control ml-1" id="exampleFormControlSelect1">
+                            <option [ngValue]="ss.shoesSizeId" *ngFor="let ss of shoeSizes">{{ss.name}}</option>
+                        </select>
+                        <select *ngIf="clothesSizes != null" [(ngModel)]='sizeValue' style="width:75px;height: 35px;"
+                            class="form-control ml-1" id="exampleFormControlSelect1">
+                            <option [ngValue]="cs.clothesSizeId" *ngFor="let cs of clothesSizes">{{cs.name}}</option>
+                        </select>
+                    </div>
+                    <div class="d-flex align-items-center ml-4">
+                        <span>Quantity:</span>
+                        <input [(ngModel)]="quantityValue" (change)="onQuantityChange($event)" style="width: 75px;"
+                            class="form-control ml-1" type="number">
+                    </div>
+                    <div>
+                        <button class="btn btn-primary ml-4" [disabled]="!quantityValid" (click)=onAddToCart()>Add to
+                            cart</button>
+                    </div>
+                </div>
+                <p class="text-danger" *ngIf="quantityInvalidMessage != ''">{{quantityInvalidMessage}}</p>
+            </div>
+        </div>
+    </div>
+</div>

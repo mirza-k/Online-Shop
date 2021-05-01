@@ -1,0 +1,39 @@
+<hr class="w-75">
+<div class="row d-flex justify-content-center">
+    <div *ngIf="item != null" class="col-sm-3">
+        <img style="width:100%; height: 100%" class="img-fluid"
+            src="{{item.imageUrl}}"
+            alt="">
+    </div>
+    <div *ngIf="itemShoppingCart != null" class="col-sm-3">
+        <img style="width:100%; height: 100%" class="img-fluid"
+            src="{{itemShoppingCart.imageUrl}}"
+            alt="">
+    </div>
+    <div *ngIf="item != null" class="col-sm-5">
+        <h4 style="font-weight: bold;">{{item.productPrice}} €</h4>
+        <p style="color: gray;">{{item.productName}}</p>
+        <div class="d-flex">
+            <p class="mt-2">Size: </p>
+            <input type="text" value="{{item.sizeName}}" style="width:12%" class="form-control ml-3" readonly>
+        </div>
+        <div class="d-flex">
+            <p class="mt-2">Quantity: </p>
+            <input type="text" value="{{item.quantity}}" style="width:10%" class="form-control ml-3" readonly>
+        </div>
+    </div>
+    <div *ngIf="itemShoppingCart != null" class="col-sm-5">
+        <h4 style="font-weight: bold;">{{itemShoppingCart.productPrice}} €</h4>
+        <p style="color: gray;">{{itemShoppingCart.productName}}</p>
+        <div class="d-flex">
+            <p class="mt-2">Size: </p>
+            <input type="text" *ngIf="itemShoppingCart.shoeSize != null" value="{{itemShoppingCart.shoeSize}}" style="width:12%" class="form-control ml-3" readonly>
+            <input type="text" *ngIf="itemShoppingCart.clothesSize != null" value="{{itemShoppingCart.clothesSize}}" style="width:12%" class="form-control ml-3" readonly>
+        </div>
+        <div class="d-flex">
+            <p class="mt-2">Quantity: </p>
+            <input type="text" value="{{itemShoppingCart.quantity}}" style="width:10%" class="form-control ml-3" readonly>
+        </div>
+    </div>
+</div>
+<hr class="w-75">

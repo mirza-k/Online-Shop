@@ -1,0 +1,88 @@
+<div class="row mt-0 d-flex justify-content-center">
+    <div *ngIf="searchValue == null || searchValue == 'null'" class="col-sm-3">
+        <div style="background-color: grey; position: fixed; width: 20%; border-radius: 10px; height:600px;color: white;"
+            class="mt-2 p-3">
+            <h3 *ngIf="categoryId == 1">Shoes({{products.length}})</h3>
+            <h3 *ngIf="categoryId == 2">Clothes({{products.length}})</h3>
+            <hr style="background-color: white;">
+            <div>
+                <h4>Gender</h4>
+                <div class="d-flex align-items-center">
+                    <input type="checkbox" #chb (click)="onGenderCategoryCheckbox($event)" value="1">
+                    <span style="font-size: 18px;" class="ml-2">Male</span>
+                </div>
+                <div class="d-flex align-items-center">
+                    <input type="checkbox" #chb (click)="onGenderCategoryCheckbox($event)" value="2">
+                    <span style="font-size: 18px;" class="ml-2">Female</span>
+                </div>
+                <div class="d-flex align-items-center">
+                    <input type="checkbox" #chb (click)="onGenderCategoryCheckbox($event)" value="3">
+                    <span style="font-size: 18px;" class="ml-2">Unisex</span>
+                </div>
+            </div>
+            <hr style="background-color: white;">
+            <div *ngIf="categoryId == 2">
+                <h4>Subcategory</h4>
+                <div class="d-flex align-items-center">
+                    <input type="checkbox" (click)="onSubCategoryCheckbox($event)" value="5">
+                    <span style="font-size: 18px;" class="ml-2">T-Shirt</span>
+                </div>
+                <div class="d-flex align-items-center">
+                    <input type="checkbox" value="2" (click)="onSubCategoryCheckbox($event)">
+                    <span style="font-size: 18px;" class="ml-2">Tracksuit</span>
+                </div>
+                <div class="d-flex align-items-center">
+                    <input type="checkbox" value="8" (click)="onSubCategoryCheckbox($event)">
+                    <span style="font-size: 18px;" class="ml-2">Hoodie</span>
+                </div>
+                <div class="d-flex align-items-center">
+                    <input type="checkbox" value="6" (click)="onSubCategoryCheckbox($event)">
+                    <span style="font-size: 18px;" class="ml-2">Shorts</span>
+                </div>
+            </div>
+            <hr *ngIf="categoryId==2" style="background-color: white;">
+            <div>
+                <h4>Brand</h4>
+                <div class="d-flex align-items-center">
+                    <input type="checkbox" #chb (click)=onBrandCheckbox($event) value="1">
+                    <span style="font-size: 18px;" class="ml-2">Nike</span>
+                </div>
+                <div class="d-flex align-items-center">
+                    <input type="checkbox" #chb value="2" (click)=onBrandCheckbox($event)>
+                    <span style="font-size: 18px;" class="ml-2">Adidas</span>
+                </div>
+                <div class="d-flex align-items-center">
+                    <input type="checkbox" #chb value="3" (click)=onBrandCheckbox($event)>
+                    <span style="font-size: 18px;" class="ml-2">Puma</span>
+                </div>
+            </div>
+            <hr style="background-color: white;">
+            <div *ngIf="categoryId == 1">
+                <h4>Color</h4>
+                <div class="d-flex align-items-center">
+                    <input type="checkbox" #chb (click)="onColorCheckbox($event)" value="1">
+                    <span style="font-size: 18px;" class="ml-2">White</span>
+                </div>
+                <div class="d-flex align-items-center">
+                    <input type="checkbox" #chb (click)="onColorCheckbox($event)" value="4">
+                    <span style="font-size: 18px;" class="ml-2">Black</span>
+                </div>
+                <div class="d-flex align-items-center">
+                    <input type="checkbox" #chb (click)="onColorCheckbox($event)" value="2">
+                    <span style="font-size: 18px;" class="ml-2">Red</span>
+                </div>
+            </div>
+            <div class="mt-2">
+                <p style="text-decoration: underline; cursor: pointer;" (click)="ResetFilters()" class="reset-filters">
+                    Reset filters</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-9 d-sm-flex justify-content-between" style="flex-wrap: wrap;">
+        <div *ngIf="message!=''" style="margin-left: 380px; margin-top: 10px;">
+            <h2 class="text-danger ">{{message}}</h2>
+        </div>
+        <app-product-item routerLink="/product/{{p.productId}}" *ngFor="let p of products" [productItem]="p">
+        </app-product-item>
+    </div>
+</div>
